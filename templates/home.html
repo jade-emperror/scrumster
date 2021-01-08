@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href={% static "/css/index.css" %}>
+    <title>Scrumster</title>
+</head>
+
+<body>
+    <div class="whole-bag">
+        <h1 class="header">Scrumster</h1>
+        <div class="btns">
+            <img src={% static "/rcs/plus.svg" %} class="plus btn" alt="">
+
+            <img src={% static "/rcs/refresh.svg" %} class="refresh btn" alt="">
+
+        </div>
+        <div class="scrum-container">
+            <div class="scrum-boxes">
+                <div class="scrum-top">
+                </div>
+                <div class="scrum-box"></div>
+            </div>
+            <div class="scrum-boxes">
+                <div class="scrum-top"></div>
+                <div class="scrum-box"></div>
+            </div>
+            <div class="scrum-boxes">
+                <div class="scrum-top">
+                </div>
+                <div class="scrum-box"></div>
+            </div>
+        </div>
+        <div id="form-thing" class="form-cont">
+            <h1>Add Task Here</h1>
+            <form action="/load" method="POST" class="scrum-add">
+                {% csrf_token %}
+                <input type="text" name="task" placeholder="task" id="nameo">
+                <select id="prio" name="priority">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select> <input type="submit" value="add">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
