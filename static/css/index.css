@@ -65,6 +65,7 @@ body {
     background-color: whitesmoke;
     border-radius: 1vw;
     border: solid .7vw black;
+    overflow: scroll;
 }
 
 .refresh {
@@ -77,6 +78,10 @@ body {
 
 .btn:hover {
     cursor: pointer;
+}
+
+.scrum-alt {
+    margin-right: 5vw;
 }
 
 .form-cont {
@@ -95,4 +100,26 @@ input {
 select {
     padding: .5vh 1vw;
     font-size: 2.5vh;
+}
+
+.box {
+    font-size: 3vh;
+    padding: 1vh 1vw;
+    color: black;
+}
+
+.a0 {
+    background-color: rgb(255, 53, 53);
+}
+
+.a1 {
+    background-color: rgb(255, 145, 0);
+}
+
+.a2 {
+    background-color: yellow;
+}
+
+.a3 {
+    background-color: greenyellow;
 }

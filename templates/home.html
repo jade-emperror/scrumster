@@ -13,8 +13,19 @@
 
 <body>
     <div class="whole-bag">
-        <h1 class="header">Scrumster</h1>
+        <h1 class="header">Scrumster
+        </h1>
         <div class="btns">
+            <form action="/alt" method="POST" class="scrum-alt">
+                {% csrf_token %}
+                <input type="text" name="task" placeholder="task" id="nameo">
+                <select id="prio" name="mode">
+                    <option value="workpool">workpool</option>
+                    <option value="working">working</option>
+                    <option value="finished">finished</option>
+                  </select>
+                <input type="submit" value="change">
+            </form>
             <img src={% static "/rcs/plus.svg" %} class="plus btn" alt="">
 
             <img src={% static "/rcs/refresh.svg" %} class="refresh btn" alt="">
@@ -24,16 +35,36 @@
             <div class="scrum-boxes">
                 <div class="scrum-top">
                 </div>
-                <div class="scrum-box"></div>
+                <div class="scrum-box">
+                    <h3 class="status">Workpool</h3>
+                    <div class="task-cont">
+                        {% for da in workpool %}
+                        <span {% if da.priority is 0 %} class="box a0" {% elif da.priority is 1 %} class="box a1" {% elif da.priority is 2 %} class="box a2" {% else %} class="box a3" {% endif %}>{{da.task}}</span> {% endfor %}
+                    </div>
+
+                </div>
             </div>
             <div class="scrum-boxes">
                 <div class="scrum-top"></div>
-                <div class="scrum-box"></div>
+                <div class="scrum-box">
+                    <h3 class="status">Working</h3>
+                    <div class="task-cont">
+                        {% for da in working %}
+                        <span {% if da.priority is 0 %} class="box a0" {% elif da.priority is 1 %} class="box a1" {% elif da.priority is 2 %} class="box a2" {% else %} class="box a3" {% endif %}>{{da.task}}</span> {% endfor %}
+                    </div>
+                </div>
             </div>
             <div class="scrum-boxes">
                 <div class="scrum-top">
                 </div>
-                <div class="scrum-box"></div>
+                <div class="scrum-box">
+                    <h3 class="status">Finished</h3>
+                    <div class="task-cont">
+                        {% for da in finished %}
+                        <span {% if da.priority is 0 %} class="box a0" {% elif da.priority is 1 %} class="box a1" {% elif da.priority is 2 %} class="box a2" {% else %} class="box a3" {% endif %}>{{da.task}}</span> {% endfor %}
+                    </div>
+
+                </div>
             </div>
         </div>
         <div id="form-thing" class="form-cont">
