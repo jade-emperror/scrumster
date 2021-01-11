@@ -1,1 +1,1 @@
-web: gunicorn scrumster.wsgi
+web: gunicorn app:app
