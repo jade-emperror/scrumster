@@ -52,7 +52,12 @@ def alt(request):
     conn = psycopg2.connect(   database="scrumdb", user='postgres', password='123qwe', host='localhost', port= '5432'   )
     cursor = conn.cursor()
     print("hi")
-    qurey="update home_load set status='"+mode+"' where task = '"+task+"'"
+    if(mode=='finished'):
+        qurey="update home_load set status='"+mode+"' ticketend='"+str(datetime.now)+"' where task = '"+task+"'"
+    elif(mode=='working'):
+        qurey="update home_load set status='"+mode+"' ticketlive='"+str(datetime.now)+"' where task = '"+task+"'"
+    else:
+        qurey="update home_load set status='"+mode+"' where task = '"+task+"'"
     cursor.execute(qurey)    
     conn.commit()
     cursor.close()
